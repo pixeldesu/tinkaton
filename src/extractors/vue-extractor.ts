@@ -2,11 +2,17 @@ import { AbstractExtractor } from "./abstract-extractor";
 
 export default class VueExtractor extends AbstractExtractor {
     detect(selector?: string): HTMLElement[] {
+        const targets: HTMLElement[] = [];
         const results: HTMLElement[] = [];
 
-        const appElement = document.querySelector("#app") as HTMLElement | undefined;
-        if (appElement && Object.hasOwn(appElement, "__vue_app__")) {
-            results.push(appElement);
+        targets.push(document.querySelector("#app") as HTMLElement);
+        targets.push(...Array.from(document.querySelectorAll("[data-v-app]")) as HTMLElement[]);
+        targets.filter(target => target);
+
+        for (const target of targets) {
+            if (target && Object.hasOwn(target, "__vue_app__")) {
+                results.push(target);
+            }
         }
 
         return results;
