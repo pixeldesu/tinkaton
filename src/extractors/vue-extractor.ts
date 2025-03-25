@@ -7,6 +7,9 @@ export default class VueExtractor extends AbstractExtractor {
 
         targets.push(document.querySelector("#app") as HTMLElement);
         targets.push(...Array.from(document.querySelectorAll("[data-v-app]")) as HTMLElement[]);
+        if (selector !== undefined) {
+            targets.push(...Array.from(document.querySelectorAll(selector)) as HTMLElement[]);
+        }
         targets = targets.filter(target => target);
 
         for (const target of targets) {
