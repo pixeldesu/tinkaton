@@ -1,0 +1,29 @@
+{
+  "name": "tinkaton",
+  "version": "0.0.1",
+  "description": "Library to extract information from frontend frameworks",
+  "type": "module",
+  "main": "src/index.ts",
+  "scripts": {
+    "build": "tsup src/index.ts --format esm,iife --dts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pixeldesu/tinkaton.git"
+  },
+  "keywords": [
+    "reverse-engineering",
+    "frontend",
+    "web"
+  ],
+  "author": "Andreas Nedbal <andy@pixelde.su>",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/pixeldesu/tinkaton/issues"
+  },
+  "homepage": "https://github.com/pixeldesu/tinkaton#readme",
+  "dependencies": {
+    "tsup": "^8.4.0",
+    "typescript": "^5.8.2"
+  }
+}
