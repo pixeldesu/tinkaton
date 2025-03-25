@@ -64,7 +64,9 @@ export default class ReactExtractor extends AbstractExtractor {
       }
 
       if (reactContainer) {
-        results.push(this.collectProps(reactContainer));
+        results.push({
+          props: this.collectProps(reactContainer)
+        });
       }
     }
 
@@ -84,23 +86,31 @@ export default class ReactExtractor extends AbstractExtractor {
   }
   
   collectProps(node) {
-    const collectedProps = {};
+    const collectedProps: any[] = [];
   
     function recurse(currentNode) {
       if (currentNode.memoizedProps) {
+        let props = {};
+
         for (const [key, value] of Object.entries(currentNode.memoizedProps)) {
           if (key !== "children") {
-            collectedProps[key] = value;
+            props[key] = value;
           }
         }
+
+        collectedProps.push(props);
       }
   
       if (currentNode.memoizedState && currentNode.memoizedState.element && currentNode.memoizedState.element.props) {
+        let props = {};
+
         for (const [key, value] of Object.entries(currentNode.memoizedState.element.props)) {
           if (key !== "children") {
-            collectedProps[key] = value;
+            props[key] = value;
           }
         }
+
+        collectedProps.push(props);
       }
   
       if (currentNode.child) {
