@@ -5,7 +5,8 @@
   "type": "module",
   "main": "src/index.ts",
   "scripts": {
-    "build": "tsup src/index.ts --format esm,iife --dts"
+    "build": "tsup src/index.ts --format esm,iife --dts",
+    "lint": "eslint src/"
   },
   "repository": {
     "type": "git",
@@ -22,8 +23,12 @@
     "url": "https://github.com/pixeldesu/tinkaton/issues"
   },
   "homepage": "https://github.com/pixeldesu/tinkaton#readme",
-  "dependencies": {
+  "devDependencies": {
     "tsup": "^8.4.0",
-    "typescript": "^5.8.2"
+    "typescript": "^5.8.2",
+    "@eslint/js": "^9.23.0",
+    "eslint": "^9.23.0",
+    "globals": "^16.0.0",
+    "typescript-eslint": "^8.28.0"
   }
 }
