@@ -1,8 +1,13 @@
+import AlpineExtractor from "./extractors/alpine-extractor";
 import ReactExtractor from "./extractors/react-extractor";
 import VueExtractor from "./extractors/vue-extractor";
 
 export default class Tinkaton {
-  private extractors = [new VueExtractor(), new ReactExtractor()];
+  private extractors = [
+    new VueExtractor(),
+    new ReactExtractor(),
+    new AlpineExtractor(),
+  ];
 
   run(): any[] {
     const results: any[] = [];
