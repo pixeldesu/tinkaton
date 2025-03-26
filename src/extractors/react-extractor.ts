@@ -8,8 +8,8 @@ export default class ReactExtractor extends AbstractExtractor {
       Array.from(document.querySelectorAll(selector)).forEach(node => {
         let found = false;
   
-        for (let key in node) {
-          if (node.hasOwnProperty(key)) {
+        for (const key in node) {
+          if (Object.hasOwn(node, key)) {
             if (key.startsWith("__reactContainer") || key.startsWith("_reactRootContainer")) {
               found = true;
             }
@@ -28,8 +28,8 @@ export default class ReactExtractor extends AbstractExtractor {
         (node) => {
           let found = false;
   
-          for (let key in node) {
-            if (node.hasOwnProperty(key)) {
+          for (const key in node) {
+            if (Object.hasOwn(node, key)) {
               if (key.startsWith("__reactContainer") || key.startsWith("_reactRootContainer")) {
                 found = true;
               }
@@ -54,7 +54,7 @@ export default class ReactExtractor extends AbstractExtractor {
     for (const element of elements) {
       let reactContainer;
 
-      if (element.hasOwnProperty("_reactRootContainer")) {
+      if (Object.hasOwn(element, "_reactRootContainer")) {
         reactContainer = element["_reactRootContainer"]._internalRoot?.current;
       }
       else {
@@ -76,8 +76,8 @@ export default class ReactExtractor extends AbstractExtractor {
   getReactContainerNameFromNode(element: HTMLElement): string {
     let result;
 
-    for (let key in element) {
-      if (element.hasOwnProperty(key) && key.startsWith("__reactContainer")) {
+    for (const key in element) {
+      if (Object.hasOwn(element, key) && key.startsWith("__reactContainer")) {
         result = key;
       }
     }
@@ -90,7 +90,7 @@ export default class ReactExtractor extends AbstractExtractor {
   
     function recurse(currentNode) {
       if (currentNode.memoizedProps) {
-        let props = {};
+        const props = {};
 
         for (const [key, value] of Object.entries(currentNode.memoizedProps)) {
           if (key !== "children") {
@@ -102,7 +102,7 @@ export default class ReactExtractor extends AbstractExtractor {
       }
   
       if (currentNode.memoizedState && currentNode.memoizedState.element && currentNode.memoizedState.element.props) {
-        let props = {};
+        const props = {};
 
         for (const [key, value] of Object.entries(currentNode.memoizedState.element.props)) {
           if (key !== "children") {
