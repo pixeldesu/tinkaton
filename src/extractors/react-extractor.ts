@@ -3,14 +3,17 @@ import { AbstractExtractor } from "./abstract-extractor";
 export default class ReactExtractor extends AbstractExtractor {
   detect(selector?: string): HTMLElement[] {
     const results: HTMLElement[] = [];
-    
+
     if (selector) {
-      Array.from(document.querySelectorAll(selector)).forEach(node => {
+      Array.from(document.querySelectorAll(selector)).forEach((node) => {
         let found = false;
-  
+
         for (const key in node) {
           if (Object.hasOwn(node, key)) {
-            if (key.startsWith("__reactContainer") || key.startsWith("_reactRootContainer")) {
+            if (
+              key.startsWith("__reactContainer") ||
+              key.startsWith("_reactRootContainer")
+            ) {
               found = true;
             }
           }
@@ -20,26 +23,28 @@ export default class ReactExtractor extends AbstractExtractor {
           results.push(node as HTMLElement);
         }
       });
-    }
-    else {
+    } else {
       const treeWalker = document.createTreeWalker(
         document.body,
         NodeFilter.SHOW_ELEMENT,
         (node) => {
           let found = false;
-  
+
           for (const key in node) {
             if (Object.hasOwn(node, key)) {
-              if (key.startsWith("__reactContainer") || key.startsWith("_reactRootContainer")) {
+              if (
+                key.startsWith("__reactContainer") ||
+                key.startsWith("_reactRootContainer")
+              ) {
                 found = true;
               }
             }
           }
-  
+
           return found ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_SKIP;
-        }
+        },
       );
-  
+
       while (treeWalker.nextNode()) {
         results.push(treeWalker.currentNode as HTMLElement);
       }
@@ -56,8 +61,7 @@ export default class ReactExtractor extends AbstractExtractor {
 
       if (Object.hasOwn(element, "_reactRootContainer")) {
         reactContainer = element["_reactRootContainer"]._internalRoot?.current;
-      }
-      else {
+      } else {
         const key = this.getReactContainerNameFromNode(element);
 
         reactContainer = element[key];
@@ -65,7 +69,7 @@ export default class ReactExtractor extends AbstractExtractor {
 
       if (reactContainer) {
         results.push({
-          props: this.collectProps(reactContainer)
+          props: this.collectProps(reactContainer),
         });
       }
     }
@@ -84,10 +88,10 @@ export default class ReactExtractor extends AbstractExtractor {
 
     return result;
   }
-  
+
   collectProps(node) {
     const collectedProps: any[] = [];
-  
+
     function recurse(currentNode) {
       if (currentNode.memoizedProps) {
         const props = {};
@@ -100,11 +104,17 @@ export default class ReactExtractor extends AbstractExtractor {
 
         collectedProps.push(props);
       }
-  
-      if (currentNode.memoizedState && currentNode.memoizedState.element && currentNode.memoizedState.element.props) {
+
+      if (
+        currentNode.memoizedState &&
+        currentNode.memoizedState.element &&
+        currentNode.memoizedState.element.props
+      ) {
         const props = {};
 
-        for (const [key, value] of Object.entries(currentNode.memoizedState.element.props)) {
+        for (const [key, value] of Object.entries(
+          currentNode.memoizedState.element.props,
+        )) {
           if (key !== "children") {
             props[key] = value;
           }
@@ -112,14 +122,14 @@ export default class ReactExtractor extends AbstractExtractor {
 
         collectedProps.push(props);
       }
-  
+
       if (currentNode.child) {
         recurse(currentNode.child);
       }
     }
-  
+
     recurse(node);
-  
+
     return collectedProps;
   }
 }
