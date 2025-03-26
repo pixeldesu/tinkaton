@@ -1,4 +1,5 @@
 import AlpineExtractor from "./extractors/alpine-extractor";
+import LivewireExtractor from "./extractors/livewire-extractor";
 import ReactExtractor from "./extractors/react-extractor";
 import VueExtractor from "./extractors/vue-extractor";
 
@@ -7,6 +8,7 @@ export default class Tinkaton {
     new VueExtractor(),
     new ReactExtractor(),
     new AlpineExtractor(),
+    new LivewireExtractor(),
   ];
 
   run(): any[] {
