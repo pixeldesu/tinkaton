@@ -1,6 +1,8 @@
 import { AbstractExtractor } from "./abstract-extractor";
 
 export default class AlpineExtractor extends AbstractExtractor {
+  type: string = "alpine";
+
   detect(selector?: string): HTMLElement[] {
     const results: HTMLElement[] = [];
     let targets: HTMLElement[] = [];

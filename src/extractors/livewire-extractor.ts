@@ -1,6 +1,8 @@
 import { AbstractExtractor } from "./abstract-extractor";
 
 export default class LivewireExtractor extends AbstractExtractor {
+  type: string = "livewire";
+
   detect(selector?: string): HTMLElement[] {
     const results: HTMLElement[] = [];
 

@@ -1,6 +1,8 @@
 import { AbstractExtractor } from "./abstract-extractor";
 
 export default class ReactExtractor extends AbstractExtractor {
+  type: string = "react";
+
   detect(selector?: string): HTMLElement[] {
     const results: HTMLElement[] = [];
 

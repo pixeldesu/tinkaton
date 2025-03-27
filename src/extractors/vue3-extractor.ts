@@ -1,6 +1,8 @@
 import { AbstractExtractor } from "./abstract-extractor";
 
 export default class Vue3Extractor extends AbstractExtractor {
+  type: string = "vue3";
+
   detect(selector?: string): HTMLElement[] {
     const results: HTMLElement[] = [];
     let targets: HTMLElement[] = [];

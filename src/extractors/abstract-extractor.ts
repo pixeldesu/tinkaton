@@ -1,5 +1,10 @@
 export abstract class AbstractExtractor {
   /**
+   * Named identifier for the framework
+   */
+  abstract type: string;
+
+  /**
    * Method to detect a HTML element containing framework information
    *
    * @param selector optional selector that can be passed to check
