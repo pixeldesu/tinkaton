@@ -23,6 +23,27 @@ export abstract class AbstractExtractor {
   ): TinkatonExtractionResult[] | TinkatonExtractionResult;
 
   /**
+   * Method to build a generalized result object
+   */
+  protected buildExtractionResult(data, entrypoint?): TinkatonExtractionResult {
+    return {
+      type: this.type,
+      data,
+      entrypoint,
+    };
+  }
+
+  /**
+   * Method to build a generalized detection result
+   */
+  protected buildDetectionResult(
+    detected: boolean = false,
+    elements: HTMLElement[] = [],
+  ): TinkatonDetectionResult {
+    return [detected, elements];
+  }
+
+  /**
    * Method that is called from the base class running both detection and extraction logic
    *
    * @returns extracted framework information from detected elements
@@ -35,26 +56,5 @@ export abstract class AbstractExtractor {
     }
 
     return this.extract(elements);
-  }
-
-  /**
-   * Method to build a generalized result object
-   */
-  buildExtractionResult(data, entrypoint?): TinkatonExtractionResult {
-    return {
-      type: this.type,
-      data,
-      entrypoint,
-    };
-  }
-
-  /**
-   * Method to build a generalized detection result
-   */
-  buildDetectionResult(
-    detected: boolean = false,
-    elements: HTMLElement[] = [],
-  ): TinkatonDetectionResult {
-    return [detected, elements];
   }
 }
