@@ -1,10 +1,10 @@
-import { TinkatonResult } from "../types";
+import { TinkatonDetectionResult, TinkatonExtractionResult } from "../types";
 import { AbstractExtractor } from "./abstract-extractor";
 
 export default class Vue2Extractor extends AbstractExtractor {
   type: string = "vue2";
 
-  detect(selector?: string): HTMLElement[] {
+  detect(selector?: string): TinkatonDetectionResult {
     const results: HTMLElement[] = [];
     let targets: HTMLElement[] = [];
 
@@ -22,7 +22,7 @@ export default class Vue2Extractor extends AbstractExtractor {
       }
     }
 
-    return results;
+    return this.buildDetectionResult(results.length > 0, results);
   }
 
   extract(elements: HTMLElement[]): TinkatonExtractionResult[] {

@@ -1,10 +1,10 @@
-import { TinkatonResult } from "../types";
+import { TinkatonDetectionResult, TinkatonExtractionResult } from "../types";
 import { AbstractExtractor } from "./abstract-extractor";
 
 export default class AlpineExtractor extends AbstractExtractor {
   type: string = "alpine";
 
-  detect(selector?: string): HTMLElement[] {
+  detect(selector?: string): TinkatonDetectionResult {
     const results: HTMLElement[] = [];
     let targets: HTMLElement[] = [];
 
@@ -24,14 +24,16 @@ export default class AlpineExtractor extends AbstractExtractor {
       }
     }
 
-    return results;
+    return this.buildDetectionResult(results.length > 0, results);
   }
 
   extract(elements: HTMLElement[]): TinkatonExtractionResult[] {
     const results: TinkatonExtractionResult[] = [];
 
     for (const element of elements) {
-      results.push(this.buildExtractionResult(element["_x_dataStack"][0], element));
+      results.push(
+        this.buildExtractionResult(element["_x_dataStack"][0], element),
+      );
     }
 
     return results;

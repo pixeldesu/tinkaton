@@ -1,10 +1,10 @@
-import { TinkatonResult } from "../types";
+import { TinkatonDetectionResult, TinkatonExtractionResult } from "../types";
 import { AbstractExtractor } from "./abstract-extractor";
 
 export default class ReactExtractor extends AbstractExtractor {
   type: string = "react";
 
-  detect(selector?: string): HTMLElement[] {
+  detect(selector?: string): TinkatonDetectionResult {
     const results: HTMLElement[] = [];
 
     if (selector) {
@@ -53,7 +53,7 @@ export default class ReactExtractor extends AbstractExtractor {
       }
     }
 
-    return results;
+    return this.buildDetectionResult(results.length > 0, results);
   }
 
   extract(elements: HTMLElement[]): TinkatonExtractionResult[] {
