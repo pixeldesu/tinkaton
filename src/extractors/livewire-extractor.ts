@@ -32,8 +32,8 @@ export default class LivewireExtractor extends AbstractExtractor {
     return results;
   }
 
-  extract(elements: HTMLElement[]): TinkatonResult[] {
-    const results: TinkatonResult[] = [];
+  extract(elements: HTMLElement[]): TinkatonExtractionResult[] {
+    const results: TinkatonExtractionResult[] = [];
 
     for (const element of elements) {
       results.push(this.buildExtractionResult({ ...element["__livewire"] }, element));

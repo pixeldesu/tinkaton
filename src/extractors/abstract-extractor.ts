@@ -38,7 +38,7 @@ export abstract class AbstractExtractor {
   /**
    * Method to build a generalized result object
    */
-  buildExtractionResult(data, entrypoint?): TinkatonResult {
+  buildExtractionResult(data, entrypoint?): TinkatonExtractionResult {
     return {
       type: this.type,
       data,

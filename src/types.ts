@@ -1,4 +1,4 @@
-export interface TinkatonResult {
+export interface TinkatonExtractionResult {
   type: string;
   data: any;
   entrypoint?: HTMLElement;
