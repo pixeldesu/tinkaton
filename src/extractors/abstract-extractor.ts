@@ -1,3 +1,5 @@
+import { TinkatonResult } from "../types";
+
 export abstract class AbstractExtractor {
   /**
    * Named identifier for the framework
@@ -31,5 +33,13 @@ export abstract class AbstractExtractor {
     }
 
     return this.extract(elements);
+  }
+
+  buildResult(data, entrypoint?): TinkatonResult {
+    return {
+      type: this.type,
+      data,
+      entrypoint,
+    };
   }
 }
