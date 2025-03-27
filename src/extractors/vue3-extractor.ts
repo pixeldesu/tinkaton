@@ -1,10 +1,10 @@
-import { TinkatonDetectionResult, TinkatonExtractionResult } from "../types";
+import { DetectionResult, ExtractionResult } from "../types";
 import { AbstractExtractor } from "./abstract-extractor";
 
 export default class Vue3Extractor extends AbstractExtractor {
   type: string = "vue3";
 
-  detect(selector?: string): TinkatonDetectionResult {
+  detect(selector?: string): DetectionResult {
     const results: HTMLElement[] = [];
     let targets: HTMLElement[] = [];
 
@@ -30,8 +30,8 @@ export default class Vue3Extractor extends AbstractExtractor {
     return this.buildDetectionResult(results.length > 0, results);
   }
 
-  extract(elements: HTMLElement[]): TinkatonExtractionResult[] {
-    const results: TinkatonExtractionResult[] = [];
+  extract(elements: HTMLElement[]): ExtractionResult[] {
+    const results: ExtractionResult[] = [];
 
     for (const element of elements) {
       results.push(

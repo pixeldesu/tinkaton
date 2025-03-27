@@ -1,7 +1,7 @@
-export interface TinkatonExtractionResult {
+export interface ExtractionResult {
   type: string;
   data: any;
   entrypoint?: HTMLElement;
 }
 
-export type TinkatonDetectionResult = [boolean, HTMLElement[]];
+export type DetectionResult = [boolean, HTMLElement[]];
