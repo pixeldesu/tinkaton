@@ -1,4 +1,4 @@
-import { TinkatonResult } from "../types";
+import { TinkatonDetectionResult, TinkatonExtractionResult } from "../types";
 
 export abstract class AbstractExtractor {
   /**
@@ -11,14 +11,16 @@ export abstract class AbstractExtractor {
    *
    * @param selector optional selector that can be passed to check
    */
-  abstract detect(selector?: string): HTMLElement[];
+  abstract detect(selector?: string): TinkatonDetectionResult;
 
   /**
    * Method to extract framework information from a list of HTML elements
    *
    * @param elements (detected) HTML elements containing framework information
    */
-  abstract extract(elements: HTMLElement[]): TinkatonResult[] | TinkatonResult;
+  abstract extract(
+    elements: HTMLElement[],
+  ): TinkatonExtractionResult[] | TinkatonExtractionResult;
 
   /**
    * Method that is called from the base class running both detection and extraction logic
@@ -26,9 +28,9 @@ export abstract class AbstractExtractor {
    * @returns extracted framework information from detected elements
    */
   run() {
-    const elements = this.detect();
+    const [detected, elements] = this.detect();
 
-    if (!elements) {
+    if (!detected) {
       return null;
     }
 
@@ -44,5 +46,15 @@ export abstract class AbstractExtractor {
       data,
       entrypoint,
     };
+  }
+
+  /**
+   * Method to build a generalized detection result
+   */
+  buildDetectionResult(
+    detected: boolean = false,
+    elements: HTMLElement[] = [],
+  ): TinkatonDetectionResult {
+    return [detected, elements];
   }
 }

@@ -3,3 +3,5 @@ export interface TinkatonExtractionResult {
   data: any;
   entrypoint?: HTMLElement;
 }
+
+export type TinkatonDetectionResult = [boolean, HTMLElement[]];
