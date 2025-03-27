@@ -1,3 +1,4 @@
+import { TinkatonResult } from "../types";
 import { AbstractExtractor } from "./abstract-extractor";
 
 export default class Vue2Extractor extends AbstractExtractor {
@@ -24,11 +25,11 @@ export default class Vue2Extractor extends AbstractExtractor {
     return results;
   }
 
-  extract(elements: HTMLElement[]): Record<string, any>[] {
-    const results: Record<string, any>[] = [];
+  extract(elements: HTMLElement[]): TinkatonResult[] {
+    const results: TinkatonResult[] = [];
 
     for (const element of elements) {
-      results.push({ ...element["__vue__"].$root });
+      results.push(this.buildResult({ ...element["__vue__"].$root }, element));
     }
 
     return results;

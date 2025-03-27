@@ -1,3 +1,4 @@
+import { TinkatonResult } from "../types";
 import { AbstractExtractor } from "./abstract-extractor";
 
 export default class AlpineExtractor extends AbstractExtractor {
@@ -26,11 +27,11 @@ export default class AlpineExtractor extends AbstractExtractor {
     return results;
   }
 
-  extract(elements: HTMLElement[]): Record<string, any>[] {
-    const results: Record<string, any>[] = [];
+  extract(elements: HTMLElement[]): TinkatonResult[] {
+    const results: TinkatonResult[] = [];
 
     for (const element of elements) {
-      results.push(element["_x_dataStack"][0]);
+      results.push(this.buildResult(element["_x_dataStack"][0], element));
     }
 
     return results;

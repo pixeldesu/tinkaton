@@ -1,3 +1,4 @@
+import { TinkatonResult } from "../types";
 import { AbstractExtractor } from "./abstract-extractor";
 
 export default class Vue3Extractor extends AbstractExtractor {
@@ -29,16 +30,16 @@ export default class Vue3Extractor extends AbstractExtractor {
     return results;
   }
 
-  extract(elements: HTMLElement[]): Record<string, any>[] {
-    const results: Record<string, any>[] = [];
+  extract(elements: HTMLElement[]): TinkatonResult[] {
+    const results: TinkatonResult[] = [];
 
     for (const element of elements) {
-      results.push({
-        ...(element["__vue_app__"]._context?.config?.globalProperties as Record<
-          string,
-          any
-        >),
-      });
+      results.push(
+        this.buildResult(
+          { ...element["__vue_app__"]._context?.config?.globalProperties },
+          element,
+        ),
+      );
     }
 
     return results;

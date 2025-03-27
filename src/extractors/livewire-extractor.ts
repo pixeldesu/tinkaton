@@ -35,7 +35,7 @@ export default class LivewireExtractor extends AbstractExtractor {
     const results: Record<string, any>[] = [];
 
     for (const element of elements) {
-      results.push({ ...element["__livewire"] });
+      results.push(this.buildResult({ ...element["__livewire"] }, element));
     }
 
     return results;

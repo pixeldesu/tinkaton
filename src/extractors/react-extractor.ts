@@ -1,3 +1,4 @@
+import { TinkatonResult } from "../types";
 import { AbstractExtractor } from "./abstract-extractor";
 
 export default class ReactExtractor extends AbstractExtractor {
@@ -55,8 +56,8 @@ export default class ReactExtractor extends AbstractExtractor {
     return results;
   }
 
-  extract(elements: HTMLElement[]): Record<string, any>[] {
-    const results: Record<string, any>[] = [];
+  extract(elements: HTMLElement[]): TinkatonResult[] {
+    const results: TinkatonResult[] = [];
 
     for (const element of elements) {
       let reactContainer;
@@ -70,9 +71,12 @@ export default class ReactExtractor extends AbstractExtractor {
       }
 
       if (reactContainer) {
-        results.push({
-          props: this.collectProps(reactContainer),
-        });
+        results.push(
+          this.buildResult(
+            { props: this.collectProps(reactContainer) },
+            element,
+          ),
+        );
       }
     }
 
