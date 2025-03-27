@@ -1,3 +1,4 @@
+import { TinkatonResult } from "../types";
 import { AbstractExtractor } from "./abstract-extractor";
 
 export default class LivewireExtractor extends AbstractExtractor {
@@ -31,11 +32,11 @@ export default class LivewireExtractor extends AbstractExtractor {
     return results;
   }
 
-  extract(elements: HTMLElement[]): Record<string, any>[] {
-    const results: Record<string, any>[] = [];
+  extract(elements: HTMLElement[]): TinkatonResult[] {
+    const results: TinkatonResult[] = [];
 
     for (const element of elements) {
-      results.push(this.buildResult({ ...element["__livewire"] }, element));
+      results.push(this.buildExtractionResult({ ...element["__livewire"] }, element));
     }
 
     return results;

@@ -35,7 +35,7 @@ export default class Vue3Extractor extends AbstractExtractor {
 
     for (const element of elements) {
       results.push(
-        this.buildResult(
+        this.buildExtractionResult(
           { ...element["__vue_app__"]._context?.config?.globalProperties },
           element,
         ),

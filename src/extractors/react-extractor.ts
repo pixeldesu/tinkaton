@@ -72,7 +72,7 @@ export default class ReactExtractor extends AbstractExtractor {
 
       if (reactContainer) {
         results.push(
-          this.buildResult(
+          this.buildExtractionResult(
             { props: this.collectProps(reactContainer) },
             element,
           ),

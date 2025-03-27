@@ -29,7 +29,7 @@ export default class Vue2Extractor extends AbstractExtractor {
     const results: TinkatonResult[] = [];
 
     for (const element of elements) {
-      results.push(this.buildResult({ ...element["__vue__"].$root }, element));
+      results.push(this.buildExtractionResult({ ...element["__vue__"].$root }, element));
     }
 
     return results;

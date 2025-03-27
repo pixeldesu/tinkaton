@@ -31,7 +31,7 @@ export default class AlpineExtractor extends AbstractExtractor {
     const results: TinkatonResult[] = [];
 
     for (const element of elements) {
-      results.push(this.buildResult(element["_x_dataStack"][0], element));
+      results.push(this.buildExtractionResult(element["_x_dataStack"][0], element));
     }
 
     return results;
