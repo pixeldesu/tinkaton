@@ -18,7 +18,7 @@ export abstract class AbstractExtractor {
    *
    * @param elements (detected) HTML elements containing framework information
    */
-  abstract extract(elements: HTMLElement[]): Record<string, any>[];
+  abstract extract(elements: HTMLElement[]): TinkatonResult[] | TinkatonResult;
 
   /**
    * Method that is called from the base class running both detection and extraction logic
