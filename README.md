@@ -42,6 +42,7 @@ tinkaton.run(); // returns an array with extracted data for each entrypoint foun
 | Vue 2     | `#app` elements with a `__vue__` property                            | The entire root component                                      |
 | Vue 3     | `#app` elements with a `__vue_app__` property                        | The global properties of the Vue instance                      |
 | React     | Elements with `_reactRootContainer` or `__reactContainer` properties | All properties passed to components down the element tree      |
+| Stimulus  | `window.Stimulus` being defined                                      | The global Stimulus instance (`window.Stimulus`)               |
 
 All extractors also support being passed a custom selector that will be tested for matching properties!
 
