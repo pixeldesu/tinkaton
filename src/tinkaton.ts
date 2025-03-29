@@ -28,7 +28,7 @@ export class Tinkaton {
 
   constructor(options: TinkatonOptions) {
     const defaultOptions = {
-      extractors: {},
+      extractorOptions: {},
     };
 
     this.options = {
