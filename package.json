@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "Library to extract information from frontend frameworks",
   "type": "module",
-  "main": "src/index.ts",
+  "main": "dist/tinkaton.js",
   "scripts": {
     "build": "tsup",
     "format": "prettier --write src/",
