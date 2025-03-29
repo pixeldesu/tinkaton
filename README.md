@@ -58,6 +58,16 @@ tinkaton.run();
 
 All element-focused extractors also support being passed a custom selector that will be tested for matching properties!
 
+## Development
+
+To work on Tinkaton locally, you need a current version of Node.js and NPM on your development environment.
+
+* Install required dependencies using `npm install`.
+* Build the project files using `npm run build`.
+* Check the project code style using:
+  * `npm run lint` for ESLint
+  * `npm run format-check` for Prettier
+
 ## Contributing
 
 If you want to contribute to the project, please check out the [Contribution Guidelines](/.github/CONTRIBUTING.md)!
