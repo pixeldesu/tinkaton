@@ -58,6 +58,10 @@ tinkaton.run();
 
 All extractors also support being passed a custom selector that will be tested for matching properties!
 
+## Contributing
+
+If you want to contribute to the project, please check out the [Contribution Guidelines](/.github/CONTRIBUTING.md)!
+
 ## License
 
 tinkaton is licensed under [aGPL v3](./LICENSE).
