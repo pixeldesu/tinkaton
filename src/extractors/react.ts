@@ -4,7 +4,7 @@ import { AbstractExtractor } from "./_abstract";
 export default class ReactExtractor extends AbstractExtractor {
   type: string = "react";
 
-  detect(selector?: string): DetectionResult {
+  detect(): DetectionResult {
     const results: HTMLElement[] = [];
 
     if (this.options.selector) {

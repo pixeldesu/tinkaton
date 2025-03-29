@@ -4,7 +4,7 @@ import { AbstractExtractor } from "./_abstract";
 export default class AlpineExtractor extends AbstractExtractor {
   type: string = "alpine";
 
-  detect(selector?: string): DetectionResult {
+  detect(): DetectionResult {
     const results: HTMLElement[] = [];
 
     const xDataElements = Array.from(document.querySelectorAll("[x-data]")) as HTMLElement[];

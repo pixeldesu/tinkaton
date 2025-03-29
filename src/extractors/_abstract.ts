@@ -13,7 +13,7 @@ export abstract class AbstractExtractor {
    *
    * @param selector optional selector that can be passed to check
    */
-  abstract detect(selector?: string): DetectionResult;
+  abstract detect(): DetectionResult;
 
   /**
    * Method to extract framework information from a list of HTML elements

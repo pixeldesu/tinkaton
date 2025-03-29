@@ -4,7 +4,7 @@ import { AbstractExtractor } from "./_abstract";
 export default class Vue3Extractor extends AbstractExtractor {
   type: string = "vue3";
 
-  detect(selector?: string): DetectionResult {
+  detect(): DetectionResult {
     const results: HTMLElement[] = [];
 
     const appElement = document.querySelector("#app") as HTMLElement;
