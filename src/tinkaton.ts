@@ -2,6 +2,7 @@ import AlpineExtractor from "./extractors/alpine";
 import LivewireExtractor from "./extractors/livewire";
 import ReactExtractor from "./extractors/react";
 import StimulusExtractor from "./extractors/stimulus";
+import TurboExtractor from "./extractors/turbo";
 import Vue2Extractor from "./extractors/vue2";
 import Vue3Extractor from "./extractors/vue3";
 import { TinkatonOptions } from "./types";
@@ -16,6 +17,7 @@ export class Tinkaton {
     AlpineExtractor,
     LivewireExtractor,
     StimulusExtractor,
+    TurboExtractor,
   ];
 
   constructor(options: TinkatonOptions) {
