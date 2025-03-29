@@ -1,4 +1,5 @@
 import AlpineExtractor from "./extractors/alpine";
+import BackboneExtractor from "./extractors/backbone";
 import EmberExtractor from "./extractors/ember";
 import LivewireExtractor from "./extractors/livewire";
 import ReactExtractor from "./extractors/react";
@@ -20,6 +21,7 @@ export class Tinkaton {
     StimulusExtractor,
     TurboExtractor,
     EmberExtractor,
+    BackboneExtractor,
   ];
 
   constructor(options: TinkatonOptions) {

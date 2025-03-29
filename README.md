@@ -45,6 +45,7 @@ tinkaton.run(); // returns an array with extracted data for each entrypoint foun
 | Stimulus  | `window.Stimulus` being defined                                      | The global Stimulus instance (`window.Stimulus`)               |
 | Turbo     | `window.Turbo` being defined                                         | The global Turbo instance (`window.Turbo`)                     |
 | Ember     | `window.Ember` being defined                                         | The global Ember instance (`window.Ember`)                     |
+| Backbone  | `window.Backbone` being defined                                      | The global Backbone instance (`window.Backbone`)               |
 
 All extractors also support being passed a custom selector that will be tested for matching properties!
 
