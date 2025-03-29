@@ -8,7 +8,7 @@ export type DetectionResult = [boolean, HTMLElement[]];
 
 export interface TinkatonOptions {
   selector?: string;
-  extractor?: Record<string, any>;
+  extractorOptions?: Record<string, any>;
 }
 
 export interface TinkatonExtractorOptions {

@@ -34,7 +34,7 @@ export class Tinkaton {
       const extractorInstance = new extractor();
       extractorInstance.setOptions({
         selector: this.options.selector,
-        ...(this.options.extractor?.[extractorInstance.type] ?? {}),
+        ...(this.options.extractorOptions?.[extractorInstance.type] ?? {}),
       });
 
       results.push(extractorInstance.run());
