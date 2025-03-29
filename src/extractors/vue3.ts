@@ -1,15 +1,18 @@
 import { DetectionResult, ExtractionResult } from "../types";
-import { AbstractExtractor } from "./abstract-extractor";
+import { AbstractExtractor } from "./_abstract";
 
-export default class AlpineExtractor extends AbstractExtractor {
-  type: string = "alpine";
+export default class Vue3Extractor extends AbstractExtractor {
+  type: string = "vue3";
 
   detect(selector?: string): DetectionResult {
     const results: HTMLElement[] = [];
     let targets: HTMLElement[] = [];
 
+    targets.push(document.querySelector("#app") as HTMLElement);
     targets.push(
-      ...(Array.from(document.querySelectorAll("[x-data]")) as HTMLElement[]),
+      ...(Array.from(
+        document.querySelectorAll("[data-v-app]"),
+      ) as HTMLElement[]),
     );
     if (selector !== undefined) {
       targets.push(
@@ -19,7 +22,7 @@ export default class AlpineExtractor extends AbstractExtractor {
     targets = targets.filter((target) => target);
 
     for (const target of targets) {
-      if (target && Object.hasOwn(target, "_x_dataStack")) {
+      if (target && Object.hasOwn(target, "__vue_app__")) {
         results.push(target);
       }
     }
@@ -32,7 +35,10 @@ export default class AlpineExtractor extends AbstractExtractor {
 
     for (const element of elements) {
       results.push(
-        this.buildExtractionResult(element["_x_dataStack"][0], element),
+        this.buildExtractionResult(
+          { ...element["__vue_app__"]._context?.config?.globalProperties },
+          element,
+        ),
       );
     }
 

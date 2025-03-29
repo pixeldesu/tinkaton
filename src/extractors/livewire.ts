@@ -1,5 +1,5 @@
 import { DetectionResult, ExtractionResult } from "../types";
-import { AbstractExtractor } from "./abstract-extractor";
+import { AbstractExtractor } from "./_abstract";
 
 export default class LivewireExtractor extends AbstractExtractor {
   type: string = "livewire";

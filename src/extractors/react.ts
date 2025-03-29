@@ -1,5 +1,5 @@
 import { DetectionResult, ExtractionResult } from "../types";
-import { AbstractExtractor } from "./abstract-extractor";
+import { AbstractExtractor } from "./_abstract";
 
 export default class ReactExtractor extends AbstractExtractor {
   type: string = "react";
