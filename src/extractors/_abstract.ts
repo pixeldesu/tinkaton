@@ -67,7 +67,7 @@ export abstract class AbstractExtractor {
     const [detected, elements] = this.detect();
 
     if (!detected) {
-      return null;
+      return [];
     }
 
     return this.extract(elements);
