@@ -7,8 +7,8 @@ export default class ReactExtractor extends AbstractExtractor {
   detect(selector?: string): DetectionResult {
     const results: HTMLElement[] = [];
 
-    if (selector) {
-      Array.from(document.querySelectorAll(selector)).forEach((node) => {
+    if (this.options.selector) {
+      Array.from(document.querySelectorAll(this.options.selector)).forEach((node) => {
         let found = false;
 
         for (const key in node) {

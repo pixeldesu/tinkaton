@@ -6,15 +6,10 @@ export default class Vue2Extractor extends AbstractExtractor {
 
   detect(selector?: string): DetectionResult {
     const results: HTMLElement[] = [];
-    let targets: HTMLElement[] = [];
 
-    targets.push(document.querySelector("#app") as HTMLElement);
-    if (selector !== undefined) {
-      targets.push(
-        ...(Array.from(document.querySelectorAll(selector)) as HTMLElement[]),
-      );
-    }
-    targets = targets.filter((target) => target);
+    const appElement = document.querySelector("#app") as HTMLElement;
+    const additionalElements = this.options.selector ? Array.from(document.querySelectorAll(this.options.selector)) as HTMLElement[] : [];
+    const targets = [ appElement, ...additionalElements];
 
     for (const target of targets) {
       if (target && Object.hasOwn(target, "__vue__")) {
