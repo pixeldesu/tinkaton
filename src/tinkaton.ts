@@ -18,12 +18,12 @@ export class Tinkaton {
 
   constructor(options: TinkatonOptions) {
     let defaultOptions = {
-      extractors: {}
+      extractors: {},
     };
 
     this.options = {
       ...defaultOptions,
-      ...options ?? {}
+      ...(options ?? {}),
     };
   }
 
@@ -34,7 +34,7 @@ export class Tinkaton {
       const extractorInstance = new extractor();
       extractorInstance.setOptions({
         selector: this.options.selector,
-        ...(this.options.extractor?.[extractorInstance.type] ?? {})
+        ...(this.options.extractor?.[extractorInstance.type] ?? {}),
       });
 
       results.push(extractorInstance.run());

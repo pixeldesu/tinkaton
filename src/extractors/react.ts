@@ -8,24 +8,26 @@ export default class ReactExtractor extends AbstractExtractor {
     const results: HTMLElement[] = [];
 
     if (this.options.selector) {
-      Array.from(document.querySelectorAll(this.options.selector)).forEach((node) => {
-        let found = false;
+      Array.from(document.querySelectorAll(this.options.selector)).forEach(
+        (node) => {
+          let found = false;
 
-        for (const key in node) {
-          if (Object.hasOwn(node, key)) {
-            if (
-              key.startsWith("__reactContainer") ||
-              key.startsWith("_reactRootContainer")
-            ) {
-              found = true;
+          for (const key in node) {
+            if (Object.hasOwn(node, key)) {
+              if (
+                key.startsWith("__reactContainer") ||
+                key.startsWith("_reactRootContainer")
+              ) {
+                found = true;
+              }
             }
           }
-        }
 
-        if (found) {
-          results.push(node as HTMLElement);
-        }
-      });
+          if (found) {
+            results.push(node as HTMLElement);
+          }
+        },
+      );
     } else {
       const treeWalker = document.createTreeWalker(
         document.body,

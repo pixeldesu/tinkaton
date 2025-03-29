@@ -7,8 +7,14 @@ export default class AlpineExtractor extends AbstractExtractor {
   detect(): DetectionResult {
     const results: HTMLElement[] = [];
 
-    const xDataElements = Array.from(document.querySelectorAll("[x-data]")) as HTMLElement[];
-    const additionalElements = this.options.selector ? Array.from(document.querySelectorAll(this.options.selector)) as HTMLElement[] : [];
+    const xDataElements = Array.from(
+      document.querySelectorAll("[x-data]"),
+    ) as HTMLElement[];
+    const additionalElements = this.options.selector
+      ? (Array.from(
+          document.querySelectorAll(this.options.selector),
+        ) as HTMLElement[])
+      : [];
     const targets = [...xDataElements, ...additionalElements];
 
     for (const target of targets) {

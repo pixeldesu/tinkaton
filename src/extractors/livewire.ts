@@ -8,11 +8,13 @@ export default class LivewireExtractor extends AbstractExtractor {
     const results: HTMLElement[] = [];
 
     if (this.options.selector) {
-      Array.from(document.querySelectorAll(this.options.selector)).forEach((node) => {
-        if (node.hasAttribute("wire:id")) {
-          results.push(node as HTMLElement);
-        }
-      });
+      Array.from(document.querySelectorAll(this.options.selector)).forEach(
+        (node) => {
+          if (node.hasAttribute("wire:id")) {
+            results.push(node as HTMLElement);
+          }
+        },
+      );
     } else {
       const treeWalker = document.createTreeWalker(
         document.body,

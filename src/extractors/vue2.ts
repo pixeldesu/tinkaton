@@ -8,8 +8,12 @@ export default class Vue2Extractor extends AbstractExtractor {
     const results: HTMLElement[] = [];
 
     const appElement = document.querySelector("#app") as HTMLElement;
-    const additionalElements = this.options.selector ? Array.from(document.querySelectorAll(this.options.selector)) as HTMLElement[] : [];
-    const targets = [ appElement, ...additionalElements];
+    const additionalElements = this.options.selector
+      ? (Array.from(
+          document.querySelectorAll(this.options.selector),
+        ) as HTMLElement[])
+      : [];
+    const targets = [appElement, ...additionalElements];
 
     for (const target of targets) {
       if (target && Object.hasOwn(target, "__vue__")) {

@@ -8,8 +8,14 @@ export default class Vue3Extractor extends AbstractExtractor {
     const results: HTMLElement[] = [];
 
     const appElement = document.querySelector("#app") as HTMLElement;
-    const vAppElements = Array.from(document.querySelectorAll("[data-v-app]")) as HTMLElement[];
-    const additionalElements = this.options.selector ? Array.from(document.querySelectorAll(this.options.selector)) as HTMLElement[] : [];
+    const vAppElements = Array.from(
+      document.querySelectorAll("[data-v-app]"),
+    ) as HTMLElement[];
+    const additionalElements = this.options.selector
+      ? (Array.from(
+          document.querySelectorAll(this.options.selector),
+        ) as HTMLElement[])
+      : [];
     const targets = [appElement, ...vAppElements, ...additionalElements];
 
     for (const target of targets) {

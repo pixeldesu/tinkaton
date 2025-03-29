@@ -1,4 +1,8 @@
-import { DetectionResult, ExtractionResult, TinkatonExtractorOptions } from "../types";
+import {
+  DetectionResult,
+  ExtractionResult,
+  TinkatonExtractorOptions,
+} from "../types";
 
 export abstract class AbstractExtractor {
   options: TinkatonExtractorOptions;
@@ -47,8 +51,8 @@ export abstract class AbstractExtractor {
 
   /**
    * Sets extractor options passed from Tinkaton
-   * 
-   * @param options 
+   *
+   * @param options
    */
   public setOptions(options: TinkatonExtractorOptions) {
     this.options = options;
