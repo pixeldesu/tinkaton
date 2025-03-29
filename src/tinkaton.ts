@@ -3,21 +3,41 @@ import LivewireExtractor from "./extractors/livewire";
 import ReactExtractor from "./extractors/react";
 import Vue2Extractor from "./extractors/vue2";
 import Vue3Extractor from "./extractors/vue3";
+import { TinkatonOptions } from "./types";
 
 export class Tinkaton {
+  options: TinkatonOptions;
+
   private extractors = [
-    new Vue2Extractor(),
-    new Vue3Extractor(),
-    new ReactExtractor(),
-    new AlpineExtractor(),
-    new LivewireExtractor(),
+    Vue2Extractor,
+    Vue3Extractor,
+    ReactExtractor,
+    AlpineExtractor,
+    LivewireExtractor,
   ];
+
+  constructor(options: TinkatonOptions) {
+    let defaultOptions = {
+      extractors: {}
+    };
+
+    this.options = {
+      ...defaultOptions,
+      ...options ?? {}
+    };
+  }
 
   run(): any[] {
     const results: any[] = [];
 
     for (const extractor of this.extractors) {
-      results.push(extractor.run());
+      const extractorInstance = new extractor();
+      extractorInstance.setOptions({
+        selector: this.options.selector,
+        ...(this.options.extractor?.[extractorInstance.type] ?? {})
+      });
+
+      results.push(extractorInstance.run());
     }
 
     return results.flat();

@@ -1,6 +1,8 @@
-import { DetectionResult, ExtractionResult } from "../types";
+import { DetectionResult, ExtractionResult, TinkatonExtractorOptions } from "../types";
 
 export abstract class AbstractExtractor {
+  options: TinkatonExtractorOptions;
+
   /**
    * Named identifier for the framework
    */
@@ -41,6 +43,15 @@ export abstract class AbstractExtractor {
     elements: HTMLElement[] = [],
   ): DetectionResult {
     return [detected, elements];
+  }
+
+  /**
+   * Sets extractor options passed from Tinkaton
+   * 
+   * @param options 
+   */
+  public setOptions(options: TinkatonExtractorOptions) {
+    this.options = options;
   }
 
   /**
