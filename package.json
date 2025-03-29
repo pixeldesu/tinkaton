@@ -5,7 +5,7 @@
   "type": "module",
   "main": "src/index.ts",
   "scripts": {
-    "build": "tsup src/index.ts --format esm,iife --dts",
+    "build": "tsup",
     "format": "prettier --write src/",
     "format-check": "prettier --check src/",
     "lint": "eslint src/"
@@ -34,5 +34,14 @@
     "tsup": "^8.4.0",
     "typescript": "^5.8.2",
     "typescript-eslint": "^8.28.0"
+  },
+  "tsup": {
+    "dts": true,
+    "entry": {
+      "tinkaton": "src/index.ts"
+    },
+    "format": ["esm", "iife"],
+    "globalName": "Tinkaton",
+    "minify": true
   }
 }

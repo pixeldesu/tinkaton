@@ -33,6 +33,14 @@ const tinkaton = new Tinkaton();
 tinkaton.run(); // returns an array with extracted data for each entrypoint found
 ```
 
+If you use the IIFE build `tinkaton.global.js`, you do the following:
+
+```js
+// Assuming you loaded tinkaton.global.js beforehand, either importing it through a script or another way
+const tinkaton = new Tinkaton.default();
+tinkaton.run(); 
+```
+
 ## Supported Frameworks
 
 | Framework | How is it detected?                                                  | What is extracted?                                             |
