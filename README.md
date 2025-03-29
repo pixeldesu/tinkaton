@@ -1,16 +1,16 @@
 <div align='center'>
   <img width=250px src='.github/images/tinkaton.png?raw=true'>
 
-  <h1>tinkaton</h1>
-  <p>tinkaton is a library that can be used to extract information from popular frontend framework entrypoints on websites.</p>
+  <h1>Tinkaton</h1>
+  <p>Tinkaton is a library that can be used to extract information from popular frontend framework entrypoints on websites.</p>
 </div>
 
 > [!IMPORTANT]
-> tinkaton is a project made to tinker with web projects in an exploratory fashion, so it should be only used for educational purposes!
+> Tinkaton is a project made to tinker with web projects in an exploratory fashion, so it should be only used for educational purposes!
 
 ## Installation
 
-You can get tinkaton via NPM:
+You can get Tinkaton via NPM:
 
 ```shell
 $ npm install tinkaton
@@ -56,7 +56,7 @@ tinkaton.run();
 | Backbone  | `window.Backbone` being defined                                      | The global Backbone instance (`window.Backbone`)               |
 | Knockout  | `window.Knockout` being defined                                      | The global Knockout instance (`window.Knockout`)               |
 
-All extractors also support being passed a custom selector that will be tested for matching properties!
+All element-focused extractors also support being passed a custom selector that will be tested for matching properties!
 
 ## Contributing
 
