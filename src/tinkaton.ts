@@ -6,6 +6,7 @@ import LivewireExtractor from "./extractors/livewire";
 import ReactExtractor from "./extractors/react";
 import RequireJsExtractor from "./extractors/requirejs";
 import StimulusExtractor from "./extractors/stimulus";
+import SystemExtractor from "./extractors/system";
 import TurboExtractor from "./extractors/turbo";
 import Vue2Extractor from "./extractors/vue2";
 import Vue3Extractor from "./extractors/vue3";
@@ -22,6 +23,7 @@ export class Tinkaton {
     AlpineExtractor,
     LivewireExtractor,
     StimulusExtractor,
+    SystemExtractor,
     TurboExtractor,
     EmberExtractor,
     BackboneExtractor,

@@ -56,6 +56,7 @@ tinkaton.run();
 | Backbone  | `window.Backbone` being defined                                              | The global Backbone instance (`window.Backbone`)               |
 | Knockout  | `window.ko` being defined                                                    | The global Knockout instance (`window.ko`)                     |
 | RequireJS | `window.requirejs`, `window.require` or `window.requireModule` being defined | The global RequireJS function (`window.require`)               |
+| SystemJS  | `window.System` being defined                                                | The global SystemJS instance (`window.System`)                 |
 
 All element-focused extractors also support being passed a custom selector that will be tested for matching properties!
 
