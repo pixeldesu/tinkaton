@@ -43,18 +43,19 @@ tinkaton.run();
 
 ## Supported Frameworks
 
-| Framework | How is it detected?                                                  | What is extracted?                                             |
-|-----------|----------------------------------------------------------------------|----------------------------------------------------------------|
-| Alpine.js | Elements with the `x-data` attribute                                 | The data instance proxy                                        |
-| Livewire  | Elements with the `wire:id` attribute                                | Livewire snapshot information (from the `__livewire` property) |
-| Vue 2     | `#app` elements with a `__vue__` property                            | The entire root component                                      |
-| Vue 3     | `#app` elements with a `__vue_app__` property                        | The global properties of the Vue instance                      |
-| React     | Elements with `_reactRootContainer` or `__reactContainer` properties | All properties passed to components down the element tree      |
-| Stimulus  | `window.Stimulus` being defined                                      | The global Stimulus instance (`window.Stimulus`)               |
-| Turbo     | `window.Turbo` being defined                                         | The global Turbo instance (`window.Turbo`)                     |
-| Ember     | `window.Ember` being defined                                         | The global Ember instance (`window.Ember`)                     |
-| Backbone  | `window.Backbone` being defined                                      | The global Backbone instance (`window.Backbone`)               |
-| Knockout  | `window.ko` being defined                                            | The global Knockout instance (`window.ko`)                     |
+| Framework | How is it detected?                                                          | What is extracted?                                             |
+|-----------|------------------------------------------------------------------------------|----------------------------------------------------------------|
+| Alpine.js | Elements with the `x-data` attribute                                         | The data instance proxy                                        |
+| Livewire  | Elements with the `wire:id` attribute                                        | Livewire snapshot information (from the `__livewire` property) |
+| Vue 2     | `#app` elements with a `__vue__` property                                    | The entire root component                                      |
+| Vue 3     | `#app` elements with a `__vue_app__` property                                | The global properties of the Vue instance                      |
+| React     | Elements with `_reactRootContainer` or `__reactContainer` properties         | All properties passed to components down the element tree      |
+| Stimulus  | `window.Stimulus` being defined                                              | The global Stimulus instance (`window.Stimulus`)               |
+| Turbo     | `window.Turbo` being defined                                                 | The global Turbo instance (`window.Turbo`)                     |
+| Ember     | `window.Ember` being defined                                                 | The global Ember instance (`window.Ember`)                     |
+| Backbone  | `window.Backbone` being defined                                              | The global Backbone instance (`window.Backbone`)               |
+| Knockout  | `window.ko` being defined                                                    | The global Knockout instance (`window.ko`)                     |
+| RequireJS | `window.requirejs`, `window.require` or `window.requireModule` being defined | The global RequireJS function (`window.require`)               |
 
 All element-focused extractors also support being passed a custom selector that will be tested for matching properties!
 
